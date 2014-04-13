@@ -50,7 +50,7 @@ extern DList *DListAppend
     );
 
 /* Function declaration for DListCopy() */
-extern DList* DListCope(DList *pSrcList );
+extern DList* DListCopy(DList *pSrcList );
 
 extern void DListDebugPrint
     (
