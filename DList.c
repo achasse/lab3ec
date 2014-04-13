@@ -217,7 +217,22 @@ DListNode *DListFindData
  * End While
  * Return traverse
  *------------------------------------------------------------------------------------------------------------*/
-???
+DNode* DListFindIndex(DList *pList, int pIndex )
+{
+	assert(pList);
+	if(pIndex < 0 || pIndex >= DListGetSize(pList) )
+	{
+		return NULL;
+	}
+	
+	DListNode *traverse;
+	traverse = DListGetHead(pList);
+	while(traverse != NULL && --pIndex >= 0)
+	{
+		traverse = DListNodeGetNext(traverse);
+	}
+	return traverse;
+}
 
 /*--------------------------------------------------------------------------------------------------------------
  * FUNCT: DListFree
