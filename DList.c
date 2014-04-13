@@ -114,7 +114,21 @@ DList *DListAppend
  * End While
  * Return copy_list
  *------------------------------------------------------------------------------------------------------------*/
-???
+DList* DListCopy(DList *pSrcList)
+{
+	assert(pSrcList);
+	DList *copy_list = DListAlloc();
+	DListNode *traverse;
+	//get the head of the pSrcList 
+	traverse = DListGetHead(pSrcList);
+	
+	while(traverse != NULL)
+	{
+		DListAppend(copy_list, DListNodeGetData(traverse) );
+		traverse = DListNodeGetNext(traverse);
+	}
+	return copy_list;
+}
 
 /*--------------------------------------------------------------------------------------------------------------
  * FUNCT: DListDebugPrint
@@ -145,7 +159,24 @@ void DListDebugPrint(FILE  *pStream, DList *pList)
  * PCODE:
  * This is a pretty easy function to write. Just study DListDebugPrint().
  *------------------------------------------------------------------------------------------------------------*/
-???
+void DListDebugPrintRev(FILE *pStream, DList *pList )
+{
+	DListNode *traverse;
+	if(!pList)
+	{
+		fprintf(pStream, "List is NULL.\n");
+		return;
+	}
+	fprintf(pStream, "[ ");
+	traverse = DListGetTail(pList);
+	while(traverse != NULL)
+	{
+		DListNodeDebugPrint(pStream, traverse);
+		fprintf(pStream, " ");
+		traverse = DListNodeGetPrev(traverse);
+	}
+	fprintf(pStream, "]");
+}
 
 /*--------------------------------------------------------------------------------------------------------------
  * FUNCT: DListFindData
