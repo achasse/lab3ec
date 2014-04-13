@@ -106,7 +106,7 @@ DListNode *DListNodeGetNext
  *------------------------------------------------------------------------------------------------------------*/
 DListNode *DListNodeGetPrev(DListNode *pNode)
 {
-	asser(pNode);
+	assert(pNode);
 	return pNode->mPrev;
 }
 
