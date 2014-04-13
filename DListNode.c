@@ -141,6 +141,6 @@ void DListNodeSetNext
  *------------------------------------------------------------------------------------------------------------*/
 void DListNodeSetPrev(DListNode *pNode, DListNode *pPrev)
 {
-	asser(pNode(;
+	assert(pNode);
 	pNode->mPrev = pPrev;
 }
