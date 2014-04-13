@@ -347,7 +347,7 @@ DListNode *DListGetTail
 DList* DListInsertBefore(DList *pList, int pBefore, int pData)
 {
 	assert(pList);
-	int index = DListFindDaa(pList, pBefore);
+	int index = DListFindData(pList, pBefore);
 	
 	if(index < 0)
 	{
@@ -387,8 +387,9 @@ DList* DListInsertIndex(DList *pList, int pIndex, int pData)
 	assert(pList);
 	DListNode *index_node;
 	DListNode *new_node;
+	DListNode *prev_index;
 	
-	if(DListGetSize(pList) == 0 || pIndex < 0 || pIndex >= DListGetSize(pList))
+	if(DListIsEmpty(pList) || pIndex < 0 || pIndex >= DListGetSize(pList))
 	{
 		return NULL;
 	}
@@ -400,7 +401,20 @@ DList* DListInsertIndex(DList *pList, int pIndex, int pData)
 	}
 	
 	new_node = DListNodeAlloc(pData, DListNodeGetPrev(index_node), index_node);
-	if()
+	
+	if(DListNodeGetPrev(index_node) != NULL)
+	{
+		prev_index = DListNodeGetPrev(index_node);
+		DListNodeSetNext(prev_index, new_node);
+	}
+	else
+	{
+		DListSetHead(pList, new_node);
+	}
+	DListNodeSetPrev(index_node, new_node);
+	pList = DListSetSize(pList, (DListGetSize(pList) + 1) );
+	
+	return pList;
 }
 
 /*--------------------------------------------------------------------------------------------------------------
@@ -446,7 +460,14 @@ DList *DListRemoveData
  * Define index_node as DListNode * <- DlistFindIndex(pList, pIndex)
  * Return DListNodeRemove(pList, index_node);
  *------------------------------------------------------------------------------------------------------------*/
-???
+DList* DListRemoveIndex(DList *pList, int pIndex)
+{
+	assert(pList);
+	DListNode *index_node;
+	index_node = DListFindIndex(pList, pIndex);
+	
+	return DListNodeRemove(pList, index_node);
+}
 
 /*--------------------------------------------------------------------------------------------------------------
  * FUNCT: DListNodeRemove
@@ -480,7 +501,16 @@ DList *DListRemoveData
  * Decrement the size of pList
  * Return pList
  *------------------------------------------------------------------------------------------------------------*/
-???
+static DList* DListNodeRemove(DList *pList, DListNode *pNode)
+{
+	assert(pList);
+	if(pNode == NULL){return NULL;}
+	
+	if(pNode == DListGetHead(pList))
+	{
+		
+	}
+}
 
 /*--------------------------------------------------------------------------------------------------------------
  * FUNCT: DListSetHead
