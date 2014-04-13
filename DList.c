@@ -290,16 +290,31 @@ DListNode *DListGetHead
  * End If
  * Return -1
  *------------------------------------------------------------------------------------------------------------*/
-???
+int DListGetIndex(DList *pList, int pData)
+{
+	assert(pList);
+	int index = 0;
+	DListNode *traverse;
+	
+	traverse = DListGetHead(pList);
+	while(traverse != NULL)
+	{
+		if(pData == DListNodeGetData(traverse))
+		{
+			return index;
+		}
+		index++;
+		traverse = DListNodeGetNext(traverse);
+	}
+	//if not found in pList
+	return -1;
+}
 
 /*--------------------------------------------------------------------------------------------------------------
  * FUNCT: DListGetSize
  * DESCR: Accessor function for the pList->mSize data member. Assertion error if pList is NULL.
  *------------------------------------------------------------------------------------------------------------*/
-int DListGetSize
-    (
-    DList *pList
-    )
+int DListGetSize(DList *pList)
 {
     assert(pList);
     return pList->mSize;
@@ -329,7 +344,20 @@ DListNode *DListGetTail
  * If index < 0 Then Return null
  * Else Return DListInsertIndex(pList, index, pData)
  *------------------------------------------------------------------------------------------------------------*/
-???
+DList* DListInsertBefore(DList *pList, int pBefore, int pData)
+{
+	assert(pList);
+	int index = DListFindDaa(pList, pBefore);
+	
+	if(index < 0)
+	{
+		return NULL;
+	}
+	else
+	{
+		return DListInsertIndex(pList, index, pData)
+	}
+}
 
 /*--------------------------------------------------------------------------------------------------------------
  * FUNCT: DListInsertIndex
@@ -354,7 +382,26 @@ DListNode *DListGetTail
  * Increment the size of pList
  * Return pList
  *------------------------------------------------------------------------------------------------------------*/
-???
+DList* DListInsertIndex(DList *pList, int pIndex, int pData)
+{
+	assert(pList);
+	DListNode *index_node;
+	DListNode *new_node;
+	
+	if(DListGetSize(pList) == 0 || pIndex < 0 || pIndex >= DListGetSize(pList))
+	{
+		return NULL;
+	}
+	
+	index_node = DListFindIndex(pList, pIndex);
+	if(index_node == NULL)
+	{
+		return NULL;
+	}
+	
+	new_node = DListNodeAlloc(pData, DListNodeGetPrev(index_node), index_node);
+	if()
+}
 
 /*--------------------------------------------------------------------------------------------------------------
  * FUNCT: DListIsEmpty
