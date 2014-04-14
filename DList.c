@@ -440,11 +440,7 @@ bool DListIsEmpty
  * Define index as int <- DListGetIndex(pList, pData)
  * Return DListRemoveIndex(pList, pIndex)
  *------------------------------------------------------------------------------------------------------------*/
-DList *DListRemoveData
-    (
-    DList *pList,
-    int    pData
-    )
+DList *DListRemoveData(DList *pList, int pData)
 {
     assert(pList);
     int index = DListGetIndex(pList, pData);
@@ -503,13 +499,51 @@ DList* DListRemoveIndex(DList *pList, int pIndex)
  *------------------------------------------------------------------------------------------------------------*/
 static DList* DListNodeRemove(DList *pList, DListNode *pNode)
 {
+	DListNode *tail_prev;
+	DListNode *node_prev;
+	DListNode *node_next;
+	DListNode *b;
+	
 	assert(pList);
 	if(pNode == NULL){return NULL;}
 	
 	if(pNode == DListGetHead(pList))
 	{
-		
+		pList = DListSetHead( pList ,DListNodeGetNext(pNode));
+		if(DListGetHead(pList) != NULL)
+		{
+			//Set the prev pointer of the head node to NULL
+			DListNodeSetPrev( DListGetHead(pList) , NULL);
+		}
 	}
+	else if(pNde == DListGetTail(pList))
+	{
+		//If the tail pointer of pList is not null Then
+         	//tail_prev <- Get the prev pointer of the tail node of pList
+        	//Set the next pointer of tail_prev to NULL
+      		
+      		if(DListGetTail(pList) != NULL)
+      		{
+      			//will this change the actual pointer within the node?
+      			tail_prev = DListNodeGetPrev( DListGetTail(pList) );
+      			DListNodeSetNext(tail_prev, NULL);
+      		}
+	}
+	else
+	{
+		node_prev = DListNodeGetPrev(pNode);
+		if(node_prev != NULL)
+		{
+			node_next = DListNodeGetNext(pNode);
+			b = DListNodeGetPrev(node_next);
+		}
+	}
+	//free the node
+	DListNodeFree(pNode);
+	//decrement the size of pList
+	pList = DListSetSize(pList, (DListGetSize(pList) - 1) );
+	//return pList
+	return pList;
 }
 
 /*--------------------------------------------------------------------------------------------------------------
