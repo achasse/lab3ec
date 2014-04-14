@@ -355,7 +355,7 @@ DList* DListInsertBefore(DList *pList, int pBefore, int pData)
 	}
 	else
 	{
-		return DListInsertIndex(pList, index, pData)
+		return DListInsertIndex(pList, index, pData);
 	}
 }
 
