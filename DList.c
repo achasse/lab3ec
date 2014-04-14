@@ -217,7 +217,7 @@ DListNode *DListFindData
  * End While
  * Return traverse
  *------------------------------------------------------------------------------------------------------------*/
-DNode* DListFindIndex(DList *pList, int pIndex )
+DListNode* DListFindIndex(DList *pList, int pIndex )
 {
 	assert(pList);
 	if(pIndex < 0 || pIndex >= DListGetSize(pList) )
