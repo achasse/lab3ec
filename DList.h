@@ -62,10 +62,10 @@ extern void DListDebugPrint
 extern void DListDebusPrintRev(FILE *pStream, DList *pList );
 
 /* Function declaration for DListFindData() */
-extern DNode* DListFindData(DList *pList, int pData );
+extern DListNode* DListFindData(DList *pList, int pData );
 
 /* Function declaration for DListFindIndx() */
-extern DNode* DListFindIndex(DList *pList, int pIndex);
+extern DListNode* DListFindIndex(DList *pList, int pIndex);
 
 extern DList* DListFree
     (
