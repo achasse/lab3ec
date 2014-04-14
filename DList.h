@@ -1,6 +1,10 @@
 /***************************************************************************************************************
  * FILE: DList.h
  *
+ * Aaron Chasse
+ * CSE 220 - Lab 3 Extra Credit
+ * Spring 2014
+ * 
  * DESCRIPTION
  * Declaration of a doubly-linked list data structure. The data stored in each node is an int. See DListNode.h.
  *
