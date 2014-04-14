@@ -1,6 +1,10 @@
 /***************************************************************************************************************
  * FILE: Types.h
  *
+ * Aaron Chasse
+ * CSE 220 - Lab 3 Extra Credit
+ * Spring 2014 
+ * 
  * DESCRIPTION
  * Useful defined types.
  *
