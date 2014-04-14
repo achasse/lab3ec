@@ -3,7 +3,7 @@
 # FILE: Makefile
 # 
 # DESCRIPTION
-# Make file for the singly-linked list data structure project.
+# Make file for the doubly-linked list data structure project.
 # 
 # AUTHOR INFORMATION
 # Kevin R. Burger [KRB]

@@ -126,9 +126,7 @@ int main
  *     Print "failed ..."
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-static void ListTestCmdAppend
-    (
-    )
+static void ListTestCmdAppend()
 {
     char listname[8];
     int data;
@@ -152,7 +150,15 @@ static void ListTestCmdAppend
  *------------------------------------------------------------------------------------------------------------*/
 static void ListTestCmdCopy()
 {
-    
+    char dstlistname[8];
+    char srclistname[8];
+    DList *dstlist;
+    DList *srclist;
+    fscanf(gFin, "%s%s", dstlistname, srclistname);
+    srclist = ListManGetList(srclistname);
+    dstlist = DListCopy(srclist);
+    ListManCreateList(dstlistname, dstlist);
+    fprintf(gFout, "copied %s to %s\n", srclistname, dstlistname);
 }
 
 /*--------------------------------------------------------------------------------------------------------------
@@ -196,9 +202,7 @@ static void ListTestCmdCreate
  *     Print *failed ..."
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-static void ListTestCmdFind
-    (
-    )
+static void ListTestCmdFind()
 {
     char listname[8];
     int data;
@@ -224,7 +228,28 @@ static void ListTestCmdFind
  *     Print "failed to findat ..."
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-???
+static void ListTestCmdFindAt()
+{
+    char listname[8];
+    int index;
+    DList *list;
+    DListNode *found_node;
+    int data;
+    
+    fscanf(gFin, "%s%d", listname, &index);
+    list = ListManGetList(listname);
+    found_node = DListFindIndex(list, index);
+    data = DListNodeGetData(found_node);
+    if(found_node != NULL)
+    {
+        fprintf(gFout, "found %d in %s at %d\n", data, listname, index)
+    }
+    else
+    {
+        fprintf(gFout, "failed to findat %d in %s\n", index, listname);
+    }
+    
+}
 
 /*--------------------------------------------------------------------------------------------------------------
  * FUNCT: ListTestCmdFree
@@ -240,9 +265,7 @@ static void ListTestCmdFind
  *     Print "error ..."
  * EndIf
  *------------------------------------------------------------------------------------------------------------*/
-static void ListTestCmdFree
-    (
-    )
+static void ListTestCmdFree()
 {
     char listname[8];
     DList *list;
@@ -269,9 +292,7 @@ static void ListTestCmdFree
  *     Print "failed ..."
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-static void ListTestCmdInsert
-    (
-    )
+static void ListTestCmdInsert()
 {
     char listname[8];
     int before, data;
@@ -296,7 +317,24 @@ static void ListTestCmdInsert
  *     Print "failed ..."
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-???
+static void ListTestCmdInsertAt()
+{
+    char listname[8];
+    int index;
+    int data;
+    DList *list;
+    
+    fscanf(gFin, "%s%d%d", listname, &index, %data);
+    list = ListManGetList(listname);
+    if(DListInsertIndex(list, index, data))
+    {
+        fprintf(gFout, "inserted %d at %d in %s\n", data, index, listname);
+    }
+    else
+    {
+        fprintf(gFout, "failed to insert %d at %d in %s\n", data, index, listname);
+    }
+}
 
 /*--------------------------------------------------------------------------------------------------------------
  * FUNCT: ListTestCmdPrint
@@ -310,9 +348,7 @@ static void ListTestCmdInsert
  *     Print " ... does not exist"
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-static void ListTestCmdPrint
-    (
-    )
+static void ListTestCmdPrint()
 {
     char listname[8];
     fscanf(gFin, "%s", listname);
@@ -338,7 +374,24 @@ static void ListTestCmdPrint
  *     Print " ... does not exist"
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-???
+static void ListTestCmdPrintRev()
+{
+    char listname[8];
+    DList *list;
+    
+    fscanf(gFin, "%s", listname);
+    list = ListManGetList(listname);
+    if(list)
+    {
+        fprintf(gFout, "%s = ", listname);
+        DListDebugPrintRev(gFout, list);
+        fprintf(gFout, "\n");
+    }
+    else
+    {
+        fprintf(gFout, "%s does not exist\n", listname);
+    }
+}
 
 /*--------------------------------------------------------------------------------------------------------------
  * FUNCT: ListTestCmdRemove
@@ -352,9 +405,7 @@ static void ListTestCmdPrint
  *     Print "failed ..."
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-static void ListTestCmdRemove
-    (
-    )
+static void ListTestCmdRemove()
 {
     char listname[8];
     int data;
@@ -377,7 +428,23 @@ static void ListTestCmdRemove
  *     Print "failed ..."
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-???
+static void ListTestCmdRemoveAt()
+{
+    char listname[8];
+    DList *list;
+    int index;
+    
+    fscanf(gFin, "%s%d", listname, &index);
+    list = ListManGetList(listname);
+    if(DListRemoveIndex(list, index))
+    {
+        fprintf(gFout, "removed node at %d from %s\n", index, listname);
+    }
+    else
+    {
+        fprintf(gFout, "failed to remove node at %d\n", index);
+    }
+}
 
 /*--------------------------------------------------------------------------------------------------------------
  * FUNCT: ListTestFileClose
@@ -444,9 +511,7 @@ static void ListTestPerform
  * DESCR: Tests the linked list implementation by reading and performing various commands from a testing input
  *        file.
  *------------------------------------------------------------------------------------------------------------*/
-static void ListTest
-    (
-    )
+static void ListTest()
 {
     char cmd[9];
     ListManInit();
