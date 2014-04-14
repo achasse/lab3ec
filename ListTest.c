@@ -126,9 +126,7 @@ int main
  *     Print "failed ..."
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-static void ListTestCmdAppend
-    (
-    )
+static void ListTestCmdAppend()
 {
     char listname[8];
     int data;
@@ -152,7 +150,15 @@ static void ListTestCmdAppend
  *------------------------------------------------------------------------------------------------------------*/
 static void ListTestCmdCopy()
 {
-    
+    char dstlistname[8];
+    char srclistname[8];
+    DList *dstlist;
+    DList *srclist;
+    fscanf(gFin, "%s%s", dstlistname, srclistname);
+    srclist = ListManGetList(srclistname);
+    dstlist = DListCopy(srclist);
+    ListManCreateList(dstlistname, dstlist);
+    fprintf(gFout, "copied %s to %s\n", srclistname, dstlistname);
 }
 
 /*--------------------------------------------------------------------------------------------------------------
