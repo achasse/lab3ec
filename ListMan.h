@@ -1,6 +1,10 @@
 /***************************************************************************************************************
  * FILE: ListMan.h
  *
+ * Aaron Chasse
+ * CSE 220 - Lab 3 Extra Credit
+ * Spring 2014 
+ * 
  * DESCRIPTION
  * The "list manager" can be used to manage the lists that are being created, modified, and destroyed during
  * testing. See the comments in ListMan.c for more information.
