@@ -80,7 +80,6 @@ extern void DListNodeSetNext
     DListNode *pNext
     );
 
-// Function declaration for DListNodeSetPrev()
 extern void DListNodeSetPrev(DListNode *pNode, DListNode *pPrev);
 
 #endif
