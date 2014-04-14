@@ -1,6 +1,10 @@
 /***************************************************************************************************************
  * FILE: DList.c
  *
+ * Aaron Chasse
+ * CSE 220 - Lab 3 Extra Credit
+ * Spring 2014
+ * 
  * DESCRIPTION
  * Implementation of the doubly-linked list data structure. The data stored in each node is an int.
  *
