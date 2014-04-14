@@ -202,9 +202,7 @@ static void ListTestCmdCreate
  *     Print *failed ..."
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-static void ListTestCmdFind
-    (
-    )
+static void ListTestCmdFind()
 {
     char listname[8];
     int data;
@@ -230,7 +228,28 @@ static void ListTestCmdFind
  *     Print "failed to findat ..."
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-???
+static void ListTestCmdFindAt()
+{
+    char listname[8];
+    int index;
+    DList *list;
+    DListNode *found_node;
+    int data;
+    
+    fscanf(gFin, "%s%d", listname, &index);
+    list = ListManGetList(listname);
+    found_node = DListFindIndex(list, index);
+    data = DListNodeGetData(found_node);
+    if(found_node != NULL)
+    {
+        fprintf(gFout, "found %d in %s at %d\n", data, listname, index)
+    }
+    else
+    {
+        fprintf(gFout, "failed to findat %d in %s\n", index, listname);
+    }
+    
+}
 
 /*--------------------------------------------------------------------------------------------------------------
  * FUNCT: ListTestCmdFree
