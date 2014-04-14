@@ -150,7 +150,10 @@ static void ListTestCmdAppend
  * Call ListManCreateList() to add the dstlist to the list manager database.
  * Print "copied ..."
  *------------------------------------------------------------------------------------------------------------*/
-???
+static void ListTestCmdCopy()
+{
+    
+}
 
 /*--------------------------------------------------------------------------------------------------------------
  * FUNCT: ListTestCmdCreate
