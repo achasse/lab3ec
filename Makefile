@@ -2,6 +2,10 @@
 #***************************************************************************************************************
 # FILE: Makefile
 # 
+# Aaron Chasse
+# CSE 220 - Lab 3 Extra Credit
+# Spring 2014
+#
 # DESCRIPTION
 # Make file for the doubly-linked list data structure project.
 # 
