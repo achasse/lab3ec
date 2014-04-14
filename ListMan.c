@@ -1,6 +1,10 @@
 /***************************************************************************************************************
  * FILE: ListMan.c
  *
+ * Aaron Chasse
+ * CSE 220 - Lab 3 Extra Credit
+ * Spring 2014 
+ * 
  * DESCRIPTION
  * See comments in ListMan.h
  *
