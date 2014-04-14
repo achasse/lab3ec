@@ -516,7 +516,7 @@ static DList* DListNodeRemove(DList *pList, DListNode *pNode)
 			DListNodeSetPrev( DListGetHead(pList) , NULL);
 		}
 	}
-	else if(pNde == DListGetTail(pList))
+	else if(pNode == DListGetTail(pList))
 	{
 		//If the tail pointer of pList is not null Then
          	//tail_prev <- Get the prev pointer of the tail node of pList
