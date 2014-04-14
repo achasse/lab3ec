@@ -265,9 +265,7 @@ static void ListTestCmdFindAt()
  *     Print "error ..."
  * EndIf
  *------------------------------------------------------------------------------------------------------------*/
-static void ListTestCmdFree
-    (
-    )
+static void ListTestCmdFree()
 {
     char listname[8];
     DList *list;
@@ -294,9 +292,7 @@ static void ListTestCmdFree
  *     Print "failed ..."
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-static void ListTestCmdInsert
-    (
-    )
+static void ListTestCmdInsert()
 {
     char listname[8];
     int before, data;
@@ -321,7 +317,24 @@ static void ListTestCmdInsert
  *     Print "failed ..."
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-???
+static void ListTestCmdInsertAt()
+{
+    char listname[8];
+    int index;
+    int data;
+    DList *list;
+    
+    fscanf(gFin, "%s%d%d", listname, &index, %data);
+    list = ListManGetList(listname);
+    if(DListInsertIndex(list, index, data))
+    {
+        fprintf(gFout, "inserted %d at %d in %s\n", data, index, listname);
+    }
+    else
+    {
+        fprintf(gFout, "failed to insert %d at %d in %s\n", data, index, listname);
+    }
+}
 
 /*--------------------------------------------------------------------------------------------------------------
  * FUNCT: ListTestCmdPrint
@@ -335,9 +348,7 @@ static void ListTestCmdInsert
  *     Print " ... does not exist"
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-static void ListTestCmdPrint
-    (
-    )
+static void ListTestCmdPrint()
 {
     char listname[8];
     fscanf(gFin, "%s", listname);
