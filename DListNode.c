@@ -34,12 +34,7 @@
  * Allocates a new node with mData member set to pData and mNext pointer set to pNext. Returns a pointer to the
  * new node, or NULL if malloc() fails.
  *------------------------------------------------------------------------------------------------------------*/
-DListNode *DListNodeAlloc
-    (
-    int        pData,
-    DListNode *pPrev;                /* Add pPrev pointer */
-    DListNode *pNext
-    )
+DListNode *DListNodeAlloc(int pData,DListNode *pPrev, DListNode *pNext)
 {
     DListNode *new_node = (DListNode*)malloc(sizeof(DListNode));
     if (new_node) {
